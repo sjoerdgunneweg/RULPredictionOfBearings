@@ -166,3 +166,5 @@ data/IMS/
 # temporary files just for me right now
 /notes.txt
 /requirements.txt
+/set2_timefeatures.csv
+/testNotebook.ipynb
