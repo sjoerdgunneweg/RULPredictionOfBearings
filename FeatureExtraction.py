@@ -8,6 +8,10 @@ class FeatureExtraction:
         self.datasetPath = datasetPath
         self.dataset = self.readData()
 
+    # getters and setters
+    def getData(self) -> pd.DataFrame:
+        return self.dataset
+
     # Reads csv Datasets
     def readData(self) -> pd.DataFrame:
         return pd.read_csv(self.datasetPath, sep='\t')
