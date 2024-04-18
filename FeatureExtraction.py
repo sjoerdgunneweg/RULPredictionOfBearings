@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from scipy.signal import hilbert
+import os
 
 class FeatureExtraction:
     def __init__(self, datasetPath:str):
@@ -9,16 +10,8 @@ class FeatureExtraction:
 
     # Reads csv Datasets
     def readData(self) -> pd.DataFrame:
-        dataset = pd.read_csv(self.datasetPath, sep='\t')
-        # nColumns = len(dataset.columns)
+        return pd.read_csv(self.datasetPath, sep='\t')
 
-        # if (nColumns== 4):
-        #     dataset.columns = ['Bearing 1','Bearing 2','Bearing 3','Bearing 4']
-        # elif (nColumns == 8):
-        #     dataset.columns = ['Bearing 1','Bearing 1','Bearing 2','Bearing 2', 'Bearing 3','Bearing 3','Bearing 4','Bearing 4']
-
-        return dataset
-    
     # Calculates Root Mean Square error
     def calculateRMS(self) -> list:
         return [np.sqrt(np.sum(np.square(self.dataset[column])) / len(self.dataset[column])) for column in self.dataset]
@@ -26,3 +19,15 @@ class FeatureExtraction:
     # Calculates the Hilbert Huang Transform
     def calculateHHT(self):
         return hilbert(self.dataset)
+    
+    # Plots the Features
+    def plotFeatures(self, data: pd.DataFrame):
+        pass
+    
+    def reshapeAndConcat(self, rms:list, fileName:str, rmsFrame:pd.DataFrame) -> pd.DataFrame:
+        rms = np.array(rms)
+        rms = pd.DataFrame(rms.reshape(1, 4))
+        rms.index = [fileName]
+        rmsFrame = pd.concat([rmsFrame, rms])
+
+        return rmsFrame
