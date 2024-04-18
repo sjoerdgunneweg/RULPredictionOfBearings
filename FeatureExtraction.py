@@ -24,9 +24,9 @@ class FeatureExtraction:
     def plotFeatures(self, data: pd.DataFrame):
         pass
     
-    def reshapeAndConcat(self, rms:list, fileName:str, rmsFrame:pd.DataFrame) -> pd.DataFrame:
+    def reshapeAndConcat(self, rms:list, fileName:str, rmsFrame:pd.DataFrame, dataSetID:int) -> pd.DataFrame:
         rms = np.array(rms)
-        rms = pd.DataFrame(rms.reshape(1, 4))
+        rms = pd.DataFrame(rms.reshape(1, 8)) if dataSetID == 1 else pd.DataFrame(rms.reshape(1, 4))
         rms.index = [fileName]
         rmsFrame = pd.concat([rmsFrame, rms])
 
