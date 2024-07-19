@@ -1,5 +1,7 @@
 # RULPredictionOfBearings
-This is the repository for my Bachelor's thesis on predicting Remaining Useful Life (RUL) of bearings.
+This is the repository for my Bachelor's thesis on predicting Remaining Useful Life (RUL) of bearings.\
+
+The order in which to use the files:
 
 1. Get IMFs using torchHHT_'dataset'.ipynb
 2. BPFO_'dataset'.ipynb
@@ -7,4 +9,5 @@ This is the repository for my Bachelor's thesis on predicting Remaining Useful L
 4. BiLSTM.ipynb
 
 Some notes: 
+
 the torchHHT folder mentioned in some files is from ....
